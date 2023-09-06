@@ -1,10 +1,16 @@
-# favourite_places_app
+# Favourite Places Application
 
-A new Flutter project.
+This is a flutter application which stores the favourite locations of your choice
 
-## Getting Started
+## Key Takeaways of the learning
 
-This project is a starting point for a Flutter application.
+The following were learnt during the development of the project
+
+- Image picker
+- Location
+- File
+- Riverpod state management
+- Configuring native files
 
 A few resources to get you started if this is your first Flutter project:
 

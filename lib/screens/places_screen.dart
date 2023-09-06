@@ -20,7 +20,7 @@ class _HomeScreenState extends ConsumerState<PlacesScreen> {
     final listOfPlaces = ref.watch(placeProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Your Places'), actions: [IconButton(onPressed: _addPlace, icon: const Icon(Icons.add))]),
-      body: PlacesList(places: listOfPlaces),
+      body: Padding(padding: const EdgeInsets.symmetric(vertical: 8), child: PlacesList(places: listOfPlaces)),
     );
   }
 }
