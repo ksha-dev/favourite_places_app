@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import '/widgets/image_input_widget.dart';
-import '/widgets/location_input_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '/models/place.dart';
 import '/providers/user_place_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
+
+import '/widgets/location_input_widget.dart';
+import '/widgets/image_input_widget.dart';
+import '/models/place.dart';
 
 class AddPlaceScreen extends ConsumerStatefulWidget {
   const AddPlaceScreen({super.key});
@@ -18,6 +18,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
   File? _selectedImage;
+  PlaceLocation? _selectedLocation;
 
   @override
   void dispose() {
@@ -26,8 +27,12 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    if (_titleController.text.trim().length > 2 || _selectedImage != null) {
-      ref.read(placeProvider.notifier).addPlace(Place(_titleController.text, _selectedImage!));
+    if (_titleController.text.trim().length > 2 || _selectedImage != null || _selectedLocation != null) {
+      ref.read(placeProvider.notifier).addPlace(Place(
+            title: _titleController.text,
+            image: _selectedImage!,
+            location: _selectedLocation!,
+          ));
       Navigator.pop(context);
     }
   }
@@ -50,7 +55,7 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               const SizedBox(height: 10),
               ImageInputWidget(onPicked: (file) => _selectedImage = file),
               const SizedBox(height: 16),
-              const LocationInputWidget(),
+              LocationInputWidget(onSelectLocation: (location) => _selectedLocation = location),
               const SizedBox(height: 16),
               ElevatedButton.icon(onPressed: _savePlace, icon: const Icon(Icons.add), label: const Text('Add Place'))
             ],

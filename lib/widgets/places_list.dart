@@ -1,7 +1,7 @@
-import '/screens/place_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/models/place.dart';
+import '/screens/place_details_screen.dart';
 
 class PlacesList extends StatelessWidget {
   const PlacesList({super.key, required this.places});
@@ -20,6 +20,10 @@ class PlacesList extends StatelessWidget {
         title: Text(
           places[index].title,
           style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.onBackground),
+        ),
+        subtitle: Text(
+          places[index].location.displayLocation,
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onPrimaryContainer),
         ),
       ),
     );

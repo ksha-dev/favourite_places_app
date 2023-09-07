@@ -6,11 +6,16 @@ This is a flutter application which stores the favourite locations of your choic
 
 The following were learnt during the development of the project
 
-- Image picker
-- Location
-- File
-- Riverpod state management
-- Configuring native files
+- Image picker - selecting images
+- Location - fetching current location
+- File - storing images
+- Riverpod - state management
+- Configuring native files - keys
+- Map Integration
+- SQLite Storage - Internal storage
+- Google Maps
+- Path providers
+- Path management - copying image to a second directory
 
 A few resources to get you started if this is your first Flutter project:
 
